@@ -20,6 +20,6 @@ Queue
 - Remove from the start
 
                 --------------
-Insert here ->  1  2 3 4 5 6 7 -> Remove from here
+Remove here <-  1  2 3 4 5 6 7 <- Insert here
                 --------------
 """
