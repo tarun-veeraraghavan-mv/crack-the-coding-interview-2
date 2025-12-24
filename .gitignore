@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.so
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# IDE-specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and other generated files
+*.log
+queries/
+
+# Dependency management
+Pipfile.lock # Already tracked, but good to have in .gitignore for new projects
+
+# Docker
+.dockerignore
+
+
+.env
