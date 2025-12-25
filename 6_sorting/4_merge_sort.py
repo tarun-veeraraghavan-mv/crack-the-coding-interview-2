@@ -17,9 +17,11 @@ def merge(list1: list[int], list2: list[int]):
 
     while i < len(list1):
         combined.append(list1[i])
+        i += 1
 
     while j < len(list2):
         combined.append(list2[j])
+        j += 1
 
     return combined
 
@@ -32,4 +34,4 @@ def merge_sort(my_list: list[int]):
 
     return merge(left, right)
 
-print(merge_sort([4,3,6,1,2]))
+print(merge_sort([4,3,6,1,2,5,0]))

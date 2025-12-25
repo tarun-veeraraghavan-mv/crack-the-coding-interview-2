@@ -30,19 +30,11 @@ b.right = f
 """
 
 # DFS types
-## Inorder traversal
-## Visit the left branch, the current node and then the right node
-print("Inorder traversal")
-def inorder_traversal(tree: Node):
-    if tree != None:
-        inorder_traversal(tree=tree.left)
-        print(tree.val)
-        inorder_traversal(tree=tree.right)
-
-inorder_traversal(tree=tree)
 
 ## Preorder traversal 
 ## Visit the current node before its child nodes
+# Pre order -> Print first
+# Root - Left - Right
 print("Preorder traversal")
 def preorder_traversal(tree: Node):
     if tree != None:
@@ -52,8 +44,23 @@ def preorder_traversal(tree: Node):
 
 preorder_traversal(tree=tree)
 
+## Inorder traversal
+## Visit the left branch, the current node and then the right node
+# In order -> Print middle
+# Left - Root - Right
+print("Inorder traversal")
+def inorder_traversal(tree: Node):
+    if tree != None:
+        inorder_traversal(tree=tree.left)
+        print(tree.val)
+        inorder_traversal(tree=tree.right)
+
+inorder_traversal(tree=tree)
+
 ## PostOrder Traversal
 ## Visits the current node after its children nodes
+# Post order -> Print last
+# Left - Right - Root
 print("Postorder traversal")
 def postorder_traversal(tree: Node):
     if tree != None:
@@ -69,10 +76,10 @@ def bfs(tree: Node):
     if not tree:
         return
     
-    queue = deque([tree])
+    queue = [tree]
 
     while queue:
-        current = queue.popleft()
+        current = queue.pop(0)
         print(current.val)
         if current.left:
             queue.append(current.left)
