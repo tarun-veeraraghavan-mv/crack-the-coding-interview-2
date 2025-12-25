@@ -4,13 +4,17 @@ of another. Given two strings, si and s2, write code to check if s2 is a rotatio
 call to isSubs t rin g [e.g., "wate r bottle " is a rotation oP'erbottlewat"),
 """
 
+# Logic: if a string is the rotation of another string then the s2 will be 
+# present in s1 + s1
+
 def string_rotation(s1: str, s2: str):
-    new_s1 = "".join(sorted(s1))
-    new_s2 = "".join(sorted(s2))
+    # if lengths are not equal then they are not rotations
+    if len(s1) != len(s2):
+        return False
+    
+    combined_string = s1 + s1
 
-    print(new_s1, new_s2)
-
-    if new_s2 in new_s1:
+    if s2 in combined_string:
         return True
     else:
         return False
