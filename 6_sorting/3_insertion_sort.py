@@ -1,3 +1,5 @@
+# Time complexity: O(n^2)
+
 my_list = [5,4,1,2,7]
 
 def insertion_sort(arr):

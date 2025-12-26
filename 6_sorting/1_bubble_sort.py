@@ -2,7 +2,7 @@
 # Logic: Compare the first item in the list with the second item, if the first item is
 # greater than the second we will switch their positions. And then compare the second to the third 
 # and so on
-
+# Time complexity: O(n^2)
 my_list = [4,2,6,5,1,3]
 
 def bubble_sort(my_list: list[int]):

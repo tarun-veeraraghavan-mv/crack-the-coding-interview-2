@@ -1,4 +1,5 @@
 # Selection sort
+# Time complexity: O(n^2)
 
 my_list = [5,4,1,6,2]
 
