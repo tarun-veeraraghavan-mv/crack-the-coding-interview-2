@@ -41,3 +41,9 @@ All Spaces: For URLify, what if the string is just " "?
 No Spaces: What if the string has zero spaces? Does your new_index math still work?
 
 The Boundary: If you are looping from 0 to N-1, check the very first and very last index. Usually, bugs hide at the edges (indices 0 and len-1).
+
+If the problem asks for...,Think...,Why?
+"Levels, Depths, Shortest Path",BFS (Queue),You explore row-by-row.
+"Heights, Balances, Folders/Files",DFS (Recursion),You need to reach the bottom to calculate the height.
+"""For any node...""",Post-Order DFS,You need info from children before you can decide for the parent.
+Sorted Order (in a BST),In-Order DFS,Left -> Node -> Right always gives sorted order in a BST.

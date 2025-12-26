@@ -7,32 +7,39 @@ from defenition_bst import Node, tree
 from linked_list import Node as LinkedListNode
 
 def list_of_depths(root: Node) -> LinkedListNode:
-    output = LinkedListNode(val=0)
-    tail = output
-
     queue = [root]
 
+    output_list = []
+
     while len(queue) > 0:
-        curr = queue.pop(0)
+        output_node = LinkedListNode(val=0)
 
-        new_node = LinkedListNode(val=curr.val)
+        tail = output_node
 
-        tail.next = new_node
-        tail = tail.next
+        for i in range(len(queue)):
+            root = queue.pop(0)
 
-        if curr.left:
-            queue.append(curr.left)
+            tail.next = LinkedListNode(val=root.val)
 
-        if curr.right:
-            queue.append(curr.right)
+            tail = tail.next
 
-    return output.next
+            if root.left:
+                queue.append(root.left)
 
-ll = list_of_depths(root=tree)
+            if root.right:
+                queue.append(root.right)
 
-dummy = ll
+        output_list.append(output_node.next)
 
-print("Node values")
-while dummy and dummy.next:
-    print(dummy.val)
-    dummy = dummy.next
+    return output_list
+
+output = list_of_depths(root=tree)
+
+print("Print List")
+for i in range(len(output)):
+    print(f"At depth: {i}")
+    lls: LinkedListNode = output[i]
+
+    while lls:
+        print(lls.val)
+        lls = lls.next
