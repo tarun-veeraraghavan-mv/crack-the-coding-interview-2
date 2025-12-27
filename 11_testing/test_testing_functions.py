@@ -1,6 +1,6 @@
 # poetry run pytest 11_testing/test_testing_functions.py
 
-from testing_functions import get_temp, add, divide
+from testing_functions import get_temp, add, divide, UserManager
 import pytest
 
 def test_get_temp():
@@ -15,3 +15,17 @@ def test_add():
 def test_divide():
     with pytest.raises(ValueError, match="Cannot divide by zero"):
         divide(10,0)
+
+# Testing for service classes
+
+# Created a new user manager instance before every test using it
+@pytest.fixture
+def user_manager():
+    return UserManager()
+
+def test_add_user(user_manager):
+    assert user_manager.add_user(name="John Doe", email="johndoe@example.com") == True
+
+def test_get_users(user_manager):
+    user_manager.add_user(name="John Doe", email="johndoe@example.com")
+    assert len(user_manager.get_users()) == 1
