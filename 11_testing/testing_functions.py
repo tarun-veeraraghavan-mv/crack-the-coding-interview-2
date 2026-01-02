@@ -30,3 +30,21 @@ class UserManager():
 
     def get_users(self):
         return self.users
+    
+# Testing a db connection
+class DatabaseConn():
+    def __init__(self):
+        self.users = []
+
+    def add_user(self, name, email):
+        if not name or not email:
+            raise ValueError("Name and email is needed")
+
+        user = {"name": name, "email": email}
+
+        self.users.append(user)
+
+        return True
+
+    def get_users(self):
+        return self.users

@@ -47,6 +47,7 @@ preorder_traversal(tree=tree)
 ## Inorder traversal
 ## Visit the left branch, the current node and then the right node
 # In order -> Print middle
+# Gets us the node values in ascending order
 # Left - Root - Right
 print("Inorder traversal")
 def inorder_traversal(tree: Node):

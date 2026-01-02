@@ -1,6 +1,6 @@
 # poetry run pytest 11_testing/test_testing_functions.py
 
-from testing_functions import get_temp, add, divide, UserManager
+from testing_functions import get_temp, add, divide, UserManager, DatabaseConn
 import pytest
 
 def test_get_temp():
@@ -24,8 +24,40 @@ def user_manager():
     return UserManager()
 
 def test_add_user(user_manager):
+    with pytest.raises(ValueError):
+        user_manager.add_user(name="John", email="")
+    with pytest.raises(ValueError):
+        user_manager.add_user(email="johndoe@example.com", name="")
     assert user_manager.add_user(name="John Doe", email="johndoe@example.com") == True
 
 def test_get_users(user_manager):
     user_manager.add_user(name="John Doe", email="johndoe@example.com")
     assert len(user_manager.get_users()) == 1
+
+# Yield / teardown
+@pytest.fixture
+def db():
+    database = DatabaseConn()
+    yield database
+    database.data.clear()
+
+def test_add_user(db):
+    with pytest.raises(ValueError):
+        db.add_user(name="John", email="")
+    with pytest.raises(ValueError):
+        db.add_user(email="johndoe@example.com", name="")
+    assert db.add_user(name="John Doe", email="johndoe@example.com") == True
+
+def test_get_users(db):
+    db.add_user(name="John Doe", email="johndoe@example.com")
+    assert len(db.get_users()) == 1
+
+# Parameterized testing
+@pytest.mark.parametrize("a,b,expected", [
+    (1, 2, 3),
+    (2, 3, 5),
+    (3, 4, 7),
+    (4, 5, 9)
+], ids=["one", "two", "three", "four", "five"])
+def test_add2(a, b, expected):
+    assert add(a, b) == expected
