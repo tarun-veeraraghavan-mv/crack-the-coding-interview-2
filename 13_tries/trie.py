@@ -1,4 +1,5 @@
 # good video boi: https://www.youtube.com/watch?v=y3qN18t-AhQ
+# Trie is also known as a Prefix Tree
 
 class Node:
     def __init__(self):
@@ -17,10 +18,11 @@ class Trie:
                 current_node.children[c] = Node()
 
             # shift current node pointer to the new node
+            # This is how we traverse the data structure
             current_node = current_node.children[c]
 
         # After loop set the end of word to True
-        current_node.is_end_of_word = True
+        return current_node.is_end_of_word 
 
     def search(self, word):
         current_node = self.root
